@@ -1,16 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beboccas <beboccas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 12:26:14 by beboccas          #+#    #+#             */
-/*   Updated: 2023/10/14 12:01:10 by beboccas         ###   ########.fr       */
+/*   Created: 2024/10/07 16:35:29 by beboccas          #+#    #+#             */
+/*   Updated: 2024/10/07 16:47:12 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/philo.h"
+
+int	isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int	is_num(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*mlc;
+
+	mlc = malloc(nmemb * size);
+	if (!mlc)
+		return (0);
+	else
+		memset(mlc, 0, nmemb * size);
+	return (mlc);
+}
+
 
 int	ft_atoi(const char *str)
 {

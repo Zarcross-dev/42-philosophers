@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/01 16:54:25 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:47:18 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
-# include "../libft/libft.h"
-# include "../ft_printf/headers/ft_printf.h"
 
 typedef struct s_data
 {
@@ -34,16 +32,12 @@ typedef struct s_philo
 {
 	int				id;
 	pthread_t		thread;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
 }					t_philo;
 
 typedef struct s_table
 {
 	t_data		*data;
 	t_philo		*philo;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	mutex;
 }				t_table;
 
 void	*safe_calloc(size_t size);
@@ -53,6 +47,9 @@ int		is_num(char *str);
 void	clean_exit(t_table *table);
 int		free_structs(t_table *table);
 void	merror(t_table *table, char *str);
+int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
+void	*ft_calloc(size_t size, size_t nmemb);
 
 
 #endif // PHILO_H

@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:34 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/01 16:55:42 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:45:07 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	init_table(t_table *table, char **av)
 	else
 		table->data->nb_eat = -1;
 	table->philo = NULL;
-	table->forks = NULL;
-	pthread_mutex_init(&table->mutex, NULL);
 	return (1);
 }
 

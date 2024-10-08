@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:25:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/01 16:33:50 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:46:19 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,4 @@ void	*safe_calloc(size_t size)
 		exit(1);
 	}
 	return (ptr);
-}
-
-int is_num(char *str)
-{
-	int i;
-
-	i = 0;
-	if (str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
 }
