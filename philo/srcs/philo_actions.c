@@ -5,40 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 16:49:07 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/09 17:01:17 by beboccas         ###   ########.fr       */
+/*   Created: 2024/10/11 16:01:50 by beboccas          #+#    #+#             */
+/*   Updated: 2024/10/11 16:16:53 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	philo_life(t_philo *philo)
+void	take_forks(t_philo *philo)
 {
-	while (1)
-	{
-		printf("Philo %d is thinking\n", philo->id);
-		printf("Philo %d is eating\n", philo->id);
-		printf("Philo %d is sleeping\n", philo->id);
-	}
+	pthread_mutex_lock(philo->left_fork);
+	pthread_mutex_lock(philo->right_fork);
 }
 
-void	summon_philos(t_table *table)
+void	drop_forks(t_philo *philo)
 {
-	int	i;
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
+}
 
-	i = 0;
-	table->philo = safe_calloc(sizeof(t_philo) * table->data->nb_philo);
-	while (i < table->data->nb_philo)
-	{
-		table->philo[i].id = i + 1;
-		table->philo[i].last_meal = 0;
-		pthread_create(&table->philo[i].thread, NULL, (void *) philo_life, &table->philo[i]);
-		i++;
-	}
-	i = 0;
-	while (i < table->data->nb_philo)
-	{
-		pthread_join(table->philo[i].thread, NULL);
-		i++;
-	}
+void	go_to_sleep(t_philo *philo)
+{
+	printf("Philo %d is sleeping\n", philo->id);
+	usleep(philo->data->time_to_sleep * 1000);
+}
+
+void	eat(t_philo *philo)
+{
+	take_forks(philo);
+	printf("Philo %d is eating\n", philo->id);
+	usleep(philo->data->time_to_eat * 1000);
 }

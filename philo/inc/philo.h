@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/09 16:55:10 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:17:45 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct s_philo
 	int				id;
 	pthread_t		thread;
 	unsigned long	last_meal;
+	t_data			*data;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 }					t_philo;
 
 typedef struct s_table
@@ -54,6 +57,9 @@ int		ft_atoi(const char *str);
 void	*ft_calloc(size_t size, size_t nmemb);
 void	summon_philos(t_table *table);
 void	philo_life(t_philo *philo);
-
+void	take_forks(t_philo *philo);
+void	drop_forks(t_philo *philo);
+void	go_to_sleep(t_philo *philo);
+void	eat(t_philo *philo);
 
 #endif // PHILO_H
