@@ -6,7 +6,7 @@
 #    By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/18 04:27:02 by beboccas          #+#    #+#              #
-#    Updated: 2024/10/07 16:39:20 by beboccas         ###   ########.fr        #
+#    Updated: 2024/10/09 16:53:48 by beboccas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ SRCS	=	srcs/philo.c \
 			srcs/utils.c \
 			srcs/init.c \
 			srcs/exit_handler.c \
-			srcs/free_structs.c \
-			srcs/philo_utils.c
+			srcs/philo_utils.c \
+			srcs/philo_actions.c \
 			
 OBJS	=	$(SRCS:.c=.o)
 
