@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:49:07 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/11 16:20:51 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/15 02:57:25 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	philo_life(t_philo *philo)
 	{
 		eat(philo);
 		go_to_sleep(philo);
-		printf("Philo %d is thinking\n", philo->id);
+		print(philo, "is thinking\n");
 	}
 }
 

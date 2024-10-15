@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:25:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/15 02:58:43 by beboccas         ###   ########.fr       */
+/*   Created: 2024/10/15 02:44:01 by beboccas          #+#    #+#             */
+/*   Updated: 2024/10/15 02:47:43 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	print(t_philo *philo, char *str)
+long long	timestamp(void)
 {
-	pthread_mutex_lock(&philo->data->print);
-	printf("%lld %d %s", timestamp() - philo->data->start, philo->id, str);
-	pthread_mutex_unlock(&philo->data->print);
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
-void	*safe_calloc(size_t size)
+void	ft_usleep(int ms)
 {
-	void	*ptr;
+	long int	time;
 
-	ptr = ft_calloc(size, 1);
-	if (!ptr)
-	{
-		printf("Malloc failed\n");
-		exit(1);
-	}
-	return (ptr);
+	time = timestamp();
+	while (timestamp() - time < ms)
+		usleep(ms / 10);
 }
