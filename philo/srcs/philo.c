@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:27:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/09 16:48:52 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:49:23 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ int	main(int ac, char **av)
 	table = safe_calloc(sizeof(t_table));
 	if(!init(table, av))
 		clean_exit(table);
-	summon_philos(table);
 	return (1);
 }

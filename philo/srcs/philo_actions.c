@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:01:50 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/15 02:58:18 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:09:04 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	drop_forks(t_philo *philo)
 void	go_to_sleep(t_philo *philo)
 {
 	print(philo, "is sleeping\n");
-	usleep(philo->data->time_to_sleep * 1000);
+	usleep(philo->table->time_to_sleep * 1000);
 }
 
 void	eat(t_philo *philo)
 {
 	take_forks(philo);
 	print(philo, "is eating\n");
-	usleep(philo->data->time_to_eat * 1000);
+	usleep(philo->table->time_to_eat * 1000);
 	drop_forks(philo);
 }

@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:35:03 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/09 16:33:38 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:08:40 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 int	free_structs(t_table *table)
 {
-	if (table->data)
-		free(table->data);
-	if (table->philo)
-		free(table->philo);
 	if (table)
 		free(table);
 	return (1);

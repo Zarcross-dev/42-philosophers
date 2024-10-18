@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/18 12:56:42 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:21:44 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <errno.h>
+
+typedef enum e_opcode
+{
+	LOCK,
+	UNLOCK,
+	INIT,
+	DESTROY,
+	CREATE,
+	JOIN,
+	DETACH
+}	t_opcode;
 
 typedef pthread_mutex_t	t_mtx;
 
@@ -51,6 +63,7 @@ typedef struct s_table
 	bool		end;
 	t_fork		*forks;
 	t_philo		*philos;
+	t_mtx		print;
 }				t_table;
 
 void		*safe_calloc(size_t size);
@@ -72,5 +85,10 @@ void		eat(t_philo *philo);
 long long	timestamp(void);
 void		ft_usleep(int ms);
 void		print(t_philo *philo, char *str);
+void		safe_mutex_handler(t_mtx *mutex, t_opcode opcode);
+void		safe_thread_handler(pthread_t *thread, void *(*f)(void *),
+				void *data, t_opcode opcode);
+void		handle_thread_error(int error);
+void		handle_mutex_error(int error);
 
 #endif // PHILO_H
