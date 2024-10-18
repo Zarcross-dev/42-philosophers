@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:49:07 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/15 02:57:25 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:53:45 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,14 @@ void	summon_philos(t_table *table)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	table->philo = safe_calloc(sizeof(t_philo) * table->data->nb_philo);
-	while (i < table->data->nb_philo)
+	while (++i < table->data->nb_philo)
 	{
-		table->philo[i].id = i + 1;
+		table->philo[i].id = i;
 		table->philo[i].last_meal = 0;
 		table->philo[i].data = table->data;
-		table->philo[i].left_fork = &table->forks[i];
-		table->philo[i].right_fork = &table->forks[(i + 1) % table->data->nb_philo];
+
 		pthread_create(&table->philo[i].thread, NULL, (void *) philo_life, &table->philo[i]);
 		pthread_mutex_init(&table->forks[i], NULL);
 		i++;

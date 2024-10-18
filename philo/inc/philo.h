@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/15 02:57:15 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:56:42 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,39 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <stdbool.h>
 
-typedef struct s_data
+typedef pthread_mutex_t	t_mtx;
+
+typedef struct s_fork
 {
-	int				nb_philo;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				nb_eat;
-	long long		start;
-	pthread_mutex_t	print;
-}					t_data;
+	t_mtx 	fork;
+	int		id;
+}			t_fork;
 
 typedef struct s_philo
 {
-	int				id;
-	pthread_t		thread;
-	unsigned long	last_meal;
-	t_data			*data;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
+	int			id;
+	pthread_t	thread;
+	long		meal;
+	bool 		full_of_spaghetti;
+	long		last_meal;
+	t_fork		*left_fork;
+	t_fork		*right_fork;
+	struct s_table	*table;
 }					t_philo;
 
 typedef struct s_table
 {
-	t_data		*data;
-	t_philo		*philo;
-	pthread_mutex_t	*forks;
+	int			nb_philo;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			nb_eat;
+	int			start;
+	bool		end;
+	t_fork		*forks;
+	t_philo		*philos;
 }				t_table;
 
 void		*safe_calloc(size_t size);
