@@ -6,7 +6,7 @@
 #    By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/18 04:27:02 by beboccas          #+#    #+#              #
-#    Updated: 2024/10/15 02:55:00 by beboccas         ###   ########.fr        #
+#    Updated: 2024/10/22 02:16:59 by beboccas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ CC		=	gcc
 CFLAGS	=	-Werror -Wall -Wextra -g -I $(HEADER) -pthread
 
 SRCS	=	srcs/philo.c \
-			srcs/utils.c \
 			srcs/init.c \
 			srcs/exit_handler.c \
-			srcs/philo_utils.c \
-			srcs/philo_actions.c \
-			srcs/philo_summon.c \
-			srcs/time.c 
+			srcs/dinner.c \
+			srcs/utils/libft_utils.c \
+			srcs/utils/safe_utils.c \
+			srcs/utils/dinner_utils.c \
+			srcs/utils/time_utils.c 
 			
 OBJS	=	$(SRCS:.c=.o)
 

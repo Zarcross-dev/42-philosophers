@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/18 17:21:44 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/22 03:15:47 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,23 @@ typedef enum e_opcode
 	DETACH
 }	t_opcode;
 
+typedef enum e_timecode
+{
+	SECONDS,
+	MILLISECONDS,
+	MICROSECONDS
+}	t_timecode;
+
+typedef enum e_state
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
+	DEAD
+}	t_state;
+
 typedef pthread_mutex_t	t_mtx;
 
 typedef struct s_fork
@@ -47,8 +64,8 @@ typedef struct s_philo
 	long		meal;
 	bool 		full_of_spaghetti;
 	long		last_meal;
-	t_fork		*left_fork;
 	t_fork		*right_fork;
+	t_fork		*left_fork;
 	struct s_table	*table;
 }					t_philo;
 
@@ -61,34 +78,47 @@ typedef struct s_table
 	int			nb_eat;
 	int			start;
 	bool		end;
+	bool		all_threads_ready;
 	t_fork		*forks;
 	t_philo		*philos;
+	t_mtx		table_mtx;
 	t_mtx		print;
 }				t_table;
 
-void		*safe_calloc(size_t size);
 int 		init(t_table *table, char **av);
 int			valid_args(int ac, char **av);
 int			is_num(char *str);
 void		clean_exit(t_table *table);
 int			free_structs(t_table *table);
-void		merror(t_table *table, char *str);
-int			ft_isdigit(int c);
-int			ft_atoi(const char *str);
-void		*ft_calloc(size_t size, size_t nmemb);
-void		summon_philos(t_table *table);
-void		philo_life(t_philo *philo);
-void		take_forks(t_philo *philo);
-void		drop_forks(t_philo *philo);
-void		go_to_sleep(t_philo *philo);
-void		eat(t_philo *philo);
-long long	timestamp(void);
-void		ft_usleep(int ms);
-void		print(t_philo *philo, char *str);
+void		wait_all_threads(t_table *table);
+void		dinner_start(t_table *table);
+void		dinner_simulation(void *data);
+
+/* Handlers */
 void		safe_mutex_handler(t_mtx *mutex, t_opcode opcode);
 void		safe_thread_handler(pthread_t *thread, void *(*f)(void *),
 				void *data, t_opcode opcode);
+
 void		handle_thread_error(int error);
 void		handle_mutex_error(int error);
+
+/* Utils*/
+void		print(t_philo *philo, char *str);
+void		merror(t_table *table, char *str);
+int			ft_atoi(const char *str);
+void		*ft_calloc(size_t size, size_t nmemb);
+long long	timestamp(void);
+void		ft_usleep(int ms);
+void		*safe_calloc(size_t size);
+
+/*Setters and Getters */
+void		set_int(t_mtx *mutex, int *value, int new_value);
+void		set_long(t_mtx *mutex, long *value, long new_value);
+void		set_bool(t_mtx *mutex, bool *value, bool new_value);
+int			get_int(t_mtx *mutex, int *value);
+long		get_long(t_mtx *mutex, long *value);
+bool		get_bool(t_mtx *mutex, bool *value);
+long		get_time(t_timecode timecode);
+bool		is_simulation_over(t_table *table);
 
 #endif // PHILO_H

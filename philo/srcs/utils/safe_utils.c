@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:25:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/18 17:21:21 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/22 03:11:47 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,6 @@ void	safe_thread_handler(pthread_t *thread, void *(*f)(void *),
 		handle_thread_error(pthread_join(*thread, NULL));
 	else if (opcode == DETACH)
 		handle_thread_error(pthread_detach(*thread));
-}
-
-void	print(t_philo *philo, char *str)
-{
-	pthread_mutex_lock(&philo->table->print);
-	printf("%lld %d %s", timestamp() - philo->table->start, philo->id, str);
-	pthread_mutex_unlock(&philo->table->print);
 }
 
 void	*safe_calloc(size_t size)

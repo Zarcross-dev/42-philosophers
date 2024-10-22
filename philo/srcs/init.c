@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:34 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/18 17:49:35 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/22 02:25:02 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	init_philo(t_table *table)
 {
 	int		i;
 	
-	table->philos = safe_malloc(sizeof(t_philo) * table->nb_philo);
+	table->philos = safe_calloc(sizeof(t_philo) * table->nb_philo);
 	if (!table->philos)
 		return (0);
 	i = 0;
@@ -54,7 +54,7 @@ int	init_fork(t_table *table)
 {
 	int		i;
 	
-	table->forks = safe_malloc(sizeof(t_fork) * table->nb_philo);
+	table->forks = safe_calloc(sizeof(t_fork) * table->nb_philo);
 	if (!table->forks)
 		return (0);
 	i = 0;
@@ -77,6 +77,10 @@ int	init_table(t_table *table, char **av)
 		table->nb_eat = ft_atoi(av[5]);
 	else
 		table->nb_eat = -1;
+	table->start = 0;
+	table->end = false;
+	table->all_threads_ready = false;
+	safe_mutex_handler(&table->table_mtx, INIT);
 	return (1);
 }
 
@@ -84,5 +88,10 @@ int init(t_table *table, char **av)
 {
 	if (!init_table(table, av))
 		return (0);
+	if (!init_fork(table))
+		return (0);
+	if (!init_philo(table))
+		return (0);
+	assign_forks(table->philos, table->forks, 0);
 	return (1);
 }
