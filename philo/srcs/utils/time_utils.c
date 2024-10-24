@@ -6,11 +6,11 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 02:44:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/22 03:10:29 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/24 00:37:31 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philo.h"
+#include "../../inc/philo.h"
 
 long	get_time(t_timecode timecode)
 {
@@ -19,11 +19,11 @@ long	get_time(t_timecode timecode)
 	if (gettimeofday(&tv, NULL))
 		merror(NULL, "gettimeofday failed");
 	if (timecode == SECONDS)
-		return (tv.tv_sec + tv.tv_usec / 1000000);
+		return (tv.tv_sec + tv.tv_usec / 1e6);
 	else if (timecode == MILLISECONDS)
-		return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+		return (tv.tv_sec * 1e3 + tv.tv_usec / 1e3);
 	else if (timecode == MICROSECONDS)
-		return (tv.tv_sec * 1000000 + tv.tv_usec);
+		return (tv.tv_sec * 1e6 + tv.tv_usec);
 	else
 		merror(NULL, "Invalid timecode");
 	return (42);

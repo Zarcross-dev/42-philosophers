@@ -6,11 +6,11 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 02:27:27 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/22 02:38:22 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:37:28 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philo.h"
+#include "../../inc/philo.h"
 
 int	get_int(t_mtx *mutex, int *value)
 {

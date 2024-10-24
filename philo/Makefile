@@ -6,22 +6,26 @@
 #    By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/18 04:27:02 by beboccas          #+#    #+#              #
-#    Updated: 2024/10/22 02:16:59 by beboccas         ###   ########.fr        #
+#    Updated: 2024/10/24 00:33:02 by beboccas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 CC		=	gcc
-CFLAGS	=	-Werror -Wall -Wextra -g -I $(HEADER) -pthread
+CFLAGS	=	-Werror -Wall -Wextra -fsanitize=thread -I $(HEADER) -pthread
 
 SRCS	=	srcs/philo.c \
 			srcs/init.c \
 			srcs/exit_handler.c \
 			srcs/dinner.c \
+			srcs/utils/dinner_utils.c \
+			srcs/utils/getter_utils.c \
 			srcs/utils/libft_utils.c \
 			srcs/utils/safe_utils.c \
-			srcs/utils/dinner_utils.c \
-			srcs/utils/time_utils.c 
+			srcs/utils/setters_utils.c \
+			srcs/utils/sync_utils.c \
+			srcs/utils/time_utils.c \
+			srcs/utils/utils.c \
 			
 OBJS	=	$(SRCS:.c=.o)
 

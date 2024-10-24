@@ -6,11 +6,11 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:25:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/22 03:11:47 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:45:25 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philo.h"
+#include "../../inc/philo.h"
 
 void	handle_mutex_error(int error)
 {
@@ -22,9 +22,6 @@ void	handle_mutex_error(int error)
 		printf("The mutex could not be acquired because the maximum number of recursive locks for mutex has been exceeded.\n");
 	else if (error == EDEADLK)
 		printf("A deadlock condition was detected or the current thread already owns the mutex.\n");
-	else
-		printf("Unknown error\n");
-	exit(1);
 }
 
 void	safe_mutex_handler(t_mtx *mutex, t_opcode opcode)
@@ -42,14 +39,11 @@ void	safe_mutex_handler(t_mtx *mutex, t_opcode opcode)
 void	handle_thread_error(int error)
 {
 	if (error == EAGAIN)
-		("No necessary resources to create another thread\n");
+		printf("No necessary resources to create another thread\n");
 	else if (error == EINVAL)
 		printf("Invalid settings in attr.\n");
 	else if (error == EPERM)
 		printf("No permission to set the scheduling policy and parameters specified in attr.\n");
-	else
-		printf("Unknown error\n");
-	exit(1);
 }
 
 void	safe_thread_handler(pthread_t *thread, void *(*f)(void *),

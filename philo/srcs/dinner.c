@@ -6,13 +6,13 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 01:59:53 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/22 03:03:24 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/24 00:20:34 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	dinner_simulation(void *data)
+void	*dinner_simulation(void *data)
 {
 	t_philo *philo;
 
@@ -24,7 +24,8 @@ void	dinner_simulation(void *data)
 		if (philo->full_of_spaghetti)
 			break ;
 		philo_eat(philo);
-		philo_sleep(philo);
+		print_status(philo, SLEEPING, DEBUG);
+		ft_usleep(philo->table, philo->table->time_to_sleep);
 		philo_think(philo);
 	}
 	return (NULL);
@@ -34,14 +35,14 @@ void	dinner_start(t_table *table)
 {
 	int i;
 
-	i = 0;
+	i = -1;
 	if (table->nb_eat == 0)
 		return ;
 	else if (table->nb_eat == 1)
 		{}
 	else
 	{
-		while (i++ <= table->nb_philo)
+		while (++i <= table->nb_philo)
 			safe_thread_handler(&table->philos[i].thread, dinner_simulation, 
 				&table->philos[i], CREATE);
 	}

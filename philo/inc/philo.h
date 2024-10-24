@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/22 03:15:47 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/24 00:38:54 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <pthread.h>
 # include <stdbool.h>
 # include <errno.h>
+# define DEBUG 1
 
 typedef enum e_opcode
 {
@@ -66,6 +67,7 @@ typedef struct s_philo
 	long		last_meal;
 	t_fork		*right_fork;
 	t_fork		*left_fork;
+	t_mtx		philo_mtx;
 	struct s_table	*table;
 }					t_philo;
 
@@ -92,7 +94,12 @@ void		clean_exit(t_table *table);
 int			free_structs(t_table *table);
 void		wait_all_threads(t_table *table);
 void		dinner_start(t_table *table);
-void		dinner_simulation(void *data);
+void		*dinner_simulation(void *data);
+void		philo_eat(t_philo *philo);
+void		philo_think(t_philo *philo);
+void		assign_forks(t_philo *philo, t_fork *fork, int pos);
+void		print_status(t_philo *philo, t_state state, bool debug);
+void		print_status_debug(t_philo *philo, t_state state);
 
 /* Handlers */
 void		safe_mutex_handler(t_mtx *mutex, t_opcode opcode);
@@ -103,12 +110,10 @@ void		handle_thread_error(int error);
 void		handle_mutex_error(int error);
 
 /* Utils*/
-void		print(t_philo *philo, char *str);
 void		merror(t_table *table, char *str);
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t size, size_t nmemb);
-long long	timestamp(void);
-void		ft_usleep(int ms);
+void		ft_usleep(t_table *table, long ms);
 void		*safe_calloc(size_t size);
 
 /*Setters and Getters */
