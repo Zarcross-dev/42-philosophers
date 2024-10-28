@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:01:50 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/28 03:11:00 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 00:12:31 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	philo_died(t_philo *philo)
 {
 	if (get_bool(&philo->philo_mtx, &philo->full_of_spaghetti))
 		return (false);
-	if (get_time(MILLISECONDS) - get_long(&philo->philo_mtx, &philo->last_meal) > philo->table->time_to_die)
+	if (get_time(MILLISECONDS) - (get_long(&philo->philo_mtx, &philo->last_meal)) > philo->table->time_to_die)
 		return (true);
 	return (false);
 }
