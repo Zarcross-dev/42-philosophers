@@ -6,15 +6,16 @@
 #    By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/18 04:27:02 by beboccas          #+#    #+#              #
-#    Updated: 2024/10/24 00:33:02 by beboccas         ###   ########.fr        #
+#    Updated: 2024/10/28 02:49:15 by beboccas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 CC		=	gcc
-CFLAGS	=	-Werror -Wall -Wextra -fsanitize=thread -I $(HEADER) -pthread
+CFLAGS	=	-Werror -Wall -Wextra -I $(HEADER) -pthread
 
 SRCS	=	srcs/philo.c \
+			srcs/monitor.c \
 			srcs/init.c \
 			srcs/exit_handler.c \
 			srcs/dinner.c \

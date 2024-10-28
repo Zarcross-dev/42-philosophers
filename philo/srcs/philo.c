@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:27:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/23 19:43:11 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/28 02:31:15 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int ac, char **av)
 	table = safe_calloc(sizeof(t_table));
 	if(!init(table, av))
 		clean_exit(table);
+	printf("Simulation started at timestamp: %ld\n", get_time(MILLISECONDS));
 	dinner_start(table);
 	clean_exit(table);
 	return (1);

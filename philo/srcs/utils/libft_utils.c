@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:35:29 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/23 19:36:58 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/28 03:17:51 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,33 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (mlc);
 }
 
+long	ft_atol(const char *str)
+{
+	int		i;
+	long	number;
+	int		negative;
+
+	i = 0;
+	negative = 1;
+	number = 0;
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+		i++;
+	if (str[i] == '-')
+	{
+		negative = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+	{
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		number = number * 10 + str[i] - 48;
+		i++;
+	}
+	return (number * negative);
+}
 
 int	ft_atoi(const char *str)
 {

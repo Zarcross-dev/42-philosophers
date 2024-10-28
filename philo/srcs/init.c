@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:34 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/24 00:14:22 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/28 03:18:15 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,18 @@ int	init_fork(t_table *table)
 
 int	init_table(t_table *table, char **av)
 {
-	table->nb_philo = ft_atoi(av[1]);
-	table->time_to_die = ft_atoi(av[2]);
-	table->time_to_eat = ft_atoi(av[3]);
-	table->time_to_sleep = ft_atoi(av[4]);
+	table->nb_philo = ft_atol(av[1]);
+	table->time_to_die = ft_atol(av[2]);
+	table->time_to_eat = ft_atol(av[3]);
+	table->time_to_sleep = ft_atol(av[4]);
 	if (av[5])
-		table->nb_eat = ft_atoi(av[5]);
+		table->nb_eat = ft_atol(av[5]);
 	else
 		table->nb_eat = -1;
 	table->start = 0;
 	table->end = false;
 	table->all_threads_ready = false;
+	table->nb_running_threads = 0;
 	safe_mutex_handler(&table->table_mtx, INIT);
 	safe_mutex_handler(&table->print, INIT);
 	return (1);
