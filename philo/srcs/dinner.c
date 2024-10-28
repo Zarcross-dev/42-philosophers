@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 01:59:53 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/28 03:21:43 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/28 03:47:56 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	*dinner_simulation(void *data)
 	increase_long(&philo->table->table_mtx, &philo->table->nb_running_threads, 1);
 	while (!is_simulation_over(philo->table))
 	{
+		printf("ici\n");
 		if (philo->full_of_spaghetti)
 			break ;
 		philo_think(philo);
