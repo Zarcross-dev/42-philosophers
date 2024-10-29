@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 01:59:53 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 01:04:02 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 14:10:30 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	dinner_start(t_table *table)
 	int i;
 
 	i = -1;
-	if (table->nb_eat == 0)
+	if (table->nb_philo == 0)
 		return ;
-	else if (table->nb_eat == 1)
+	else if (table->nb_philo == 1)
 		safe_thread_handler(&table->philos[0].thread, solo_philo, &table->philos[0], CREATE);
 	else
 	{

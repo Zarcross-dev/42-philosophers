@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:01:50 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 01:03:05 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 14:09:57 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,21 @@ void	philo_eat(t_philo *philo)
 
 void	philo_think(t_philo *philo)
 {
+	long	time_to_think;
+	long	time_to_sleep;
+	long	time_to_eat;
+
 	print_status(philo, THINKING, DEBUG);
+	if (philo->table->nb_philo % 2 == 0)
+		return ;
+	time_to_sleep = philo->table->time_to_sleep;
+	time_to_eat = philo->table->time_to_eat;
+	time_to_think = time_to_eat * 2 - time_to_sleep;
+	if (time_to_think < 0)
+		time_to_think = 0;
+	if (philo->table->nb_philo == 1)
+	{
+		ft_usleep(philo->table, time_to_think * 0.5);
+		return ;
+	}
 }
