@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 01:59:53 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 14:10:30 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:03:20 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	*solo_philo(void *data)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
 	set_long(&philo->philo_mtx, &philo->last_meal, get_time(MILLISECONDS));
-	increase_long(&philo->table->table_mtx, &philo->table->nb_running_threads, 1);
+	increase_long(&philo->table->table_mtx,
+		&philo->table->nb_running_threads, 1);
 	print_status(philo, TAKE_FIRST_FORK, DEBUG);
 	while (!is_simulation_over(philo->table))
 		ft_usleep(philo->table, 200);
@@ -28,25 +29,26 @@ void	*solo_philo(void *data)
 
 void	*dinner_simulation(void *data)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
 	set_long(&philo->philo_mtx, &philo->last_meal, get_time(MILLISECONDS));
-	increase_long(&philo->table->table_mtx, &philo->table->nb_running_threads, 1);
+	increase_long(&philo->table->table_mtx,
+		&philo->table->nb_running_threads, 1);
 	while (!is_simulation_over(philo->table))
 	{
 		if (philo->full_of_spaghetti)
 			break ;
 		philo_think(philo);
 		if (is_simulation_over(philo->table))
-            break ;
+			break ;
 		philo_eat(philo);
 		if (is_simulation_over(philo->table))
-            break ;
+			break ;
 		print_status(philo, SLEEPING, DEBUG);
 		if (is_simulation_over(philo->table))
-            break ;
+			break ;
 		ft_usleep(philo->table, philo->table->time_to_sleep);
 	}
 	return (NULL);
@@ -54,17 +56,18 @@ void	*dinner_simulation(void *data)
 
 void	dinner_start(t_table *table)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (table->nb_philo == 0)
 		return ;
 	else if (table->nb_philo == 1)
-		safe_thread_handler(&table->philos[0].thread, solo_philo, &table->philos[0], CREATE);
+		safe_thread_handler(&table->philos[0].thread, solo_philo,
+			&table->philos[0], CREATE);
 	else
 	{
 		while (++i < table->nb_philo)
-			safe_thread_handler(&table->philos[i].thread, dinner_simulation, 
+			safe_thread_handler(&table->philos[i].thread, dinner_simulation,
 				&table->philos[i], CREATE);
 	}
 	safe_thread_handler(&table->monitor, monitor_dinner, table, CREATE);

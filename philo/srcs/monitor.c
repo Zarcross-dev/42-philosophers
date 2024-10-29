@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 02:46:17 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 00:12:24 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:00:58 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ void	*monitor_dinner(void *data)
 	int		i;
 
 	table = (t_table *)data;
-	
-	while (!all_threads_ready(&table->table_mtx, &table->nb_running_threads, &table->nb_philo))
+	while (!all_threads_ready(&table->table_mtx, &table->nb_running_threads,
+			&table->nb_philo))
 		;
-
 	while (!is_simulation_over(table))
 	{
 		i = -1;

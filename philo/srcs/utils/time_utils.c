@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 02:44:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 14:22:18 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:51:58 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_usleep(t_table *table, long ms)
 	long	start_time;
 	long	remaning_time;
 	long	elapsed_time;
-	
+
 	start_time = get_time(MILLISECONDS);
 	while (get_time(MILLISECONDS) - start_time < ms)
 	{

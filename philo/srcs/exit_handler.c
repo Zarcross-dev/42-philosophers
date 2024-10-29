@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:35:03 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 14:31:37 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:02:12 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	free_philo(t_table *table)
 		free(table->philos[table->nb_philo].left_fork);
 		free(table->philos[table->nb_philo].right_fork);
 	}
-
 	return (1);
 }
 

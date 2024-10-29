@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:35:29 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/28 03:17:51 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:52:28 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	isdigit(int c)
 
 int	is_num(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

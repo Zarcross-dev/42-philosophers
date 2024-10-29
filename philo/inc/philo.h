@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/28 03:55:50 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:55:41 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <pthread.h>
 # include <stdbool.h>
 # include <errno.h>
+
 # define DEBUG 1
 
 typedef enum e_opcode
@@ -54,20 +55,20 @@ typedef pthread_mutex_t	t_mtx;
 
 typedef struct s_fork
 {
-	t_mtx 	fork;
+	t_mtx	fork;
 	int		id;
 }			t_fork;
 
 typedef struct s_philo
 {
-	int			id;
-	pthread_t	thread;
-	long		meal;
-	bool 		full_of_spaghetti;
-	long		last_meal;
-	t_fork		*right_fork;
-	t_fork		*left_fork;
-	t_mtx		philo_mtx;
+	int				id;
+	pthread_t		thread;
+	long			meal;
+	bool			full_of_spaghetti;
+	long			last_meal;
+	t_fork			*right_fork;
+	t_fork			*left_fork;
+	t_mtx			philo_mtx;
 	struct s_table	*table;
 }					t_philo;
 
@@ -89,7 +90,7 @@ typedef struct s_table
 	t_mtx		print;
 }				t_table;
 
-int 		init(t_table *table, char **av);
+int			init(t_table *table, char **av);
 int			valid_args(int ac, char **av);
 int			is_num(char *str);
 void		clean_exit(t_table *table);
@@ -106,7 +107,6 @@ void		*monitor_dinner(void *data);
 bool		all_threads_ready(t_mtx *mtx, long *thrd, long *philo_nbr);
 bool		philo_died(t_philo *philo);
 void		*solo_philo(void *data);
-
 
 /* Handlers */
 void		safe_mutex_handler(t_mtx *mutex, t_opcode opcode);
