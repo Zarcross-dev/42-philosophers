@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 15:55:41 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:21:53 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdbool.h>
 # include <errno.h>
 
-# define DEBUG 1
+# define DEBUG 0
 
 typedef enum e_opcode
 {
