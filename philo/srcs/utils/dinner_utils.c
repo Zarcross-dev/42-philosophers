@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:01:50 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 15:54:03 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:21:21 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ void	philo_eat(t_philo *philo)
 	safe_mutex_handler(&philo->left_fork->fork, UNLOCK);
 }
 
-void	philo_think(t_philo *philo)
+void	philo_think(t_philo *philo, bool sync)
 {
 	long	time_to_think;
 	long	time_to_sleep;
 	long	time_to_eat;
 
 	print_status(philo, THINKING, DEBUG);
+	if (sync)
+		return ;
 	if (philo->table->nb_philo % 2 == 0)
 		return ;
 	time_to_sleep = philo->table->time_to_sleep;
@@ -52,9 +54,9 @@ void	philo_think(t_philo *philo)
 	time_to_think = time_to_eat * 2 - time_to_sleep;
 	if (time_to_think < 0)
 		time_to_think = 0;
-	if (philo->table->nb_philo == 1)
+	if (philo->table->nb_philo % 2 == 1)
 	{
-		ft_usleep(philo->table, time_to_think * 0.5);
+		ft_usleep(philo->table, time_to_think * 0.4);
 		return ;
 	}
 }

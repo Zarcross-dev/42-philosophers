@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 16:21:53 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:21:31 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,11 @@ int			init(t_table *table, char **av);
 int			valid_args(int ac, char **av);
 int			is_num(char *str);
 void		clean_exit(t_table *table);
-int			free_structs(t_table *table);
 void		wait_all_threads(t_table *table);
 void		dinner_start(t_table *table);
 void		*dinner_simulation(void *data);
 void		philo_eat(t_philo *philo);
-void		philo_think(t_philo *philo);
+void		philo_think(t_philo *philo, bool sync);
 void		assign_forks(t_philo *philo, t_fork *fork, int pos);
 void		print_status(t_philo *philo, t_state state, bool debug);
 void		print_status_debug(t_philo *philo, t_state state);

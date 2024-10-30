@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 01:59:53 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 16:03:20 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:22:21 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@ void	*dinner_simulation(void *data)
 	set_long(&philo->philo_mtx, &philo->last_meal, get_time(MILLISECONDS));
 	increase_long(&philo->table->table_mtx,
 		&philo->table->nb_running_threads, 1);
+	philo_think(philo, true);
 	while (!is_simulation_over(philo->table))
 	{
 		if (philo->full_of_spaghetti)
-			break ;
-		philo_think(philo);
-		if (is_simulation_over(philo->table))
 			break ;
 		philo_eat(philo);
 		if (is_simulation_over(philo->table))
@@ -50,6 +48,9 @@ void	*dinner_simulation(void *data)
 		if (is_simulation_over(philo->table))
 			break ;
 		ft_usleep(philo->table, philo->table->time_to_sleep);
+		philo_think(philo, false);
+		if (is_simulation_over(philo->table))
+			break ;
 	}
 	return (NULL);
 }
