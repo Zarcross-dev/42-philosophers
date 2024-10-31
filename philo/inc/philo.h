@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 04:33:24 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/30 18:27:16 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:59:07 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct s_table
 	t_philo		*philos;
 	t_mtx		table_mtx;
 	t_mtx		print;
+	t_mtx		death_mtx;
 }				t_table;
 
 int			init(t_table *table, char **av);
@@ -99,6 +100,7 @@ void		dinner_start(t_table *table);
 void		*dinner_simulation(void *data);
 void		philo_eat(t_philo *philo);
 void		philo_think(t_philo *philo, bool sync);
+void		philo_sleep(t_philo *philo);
 void		assign_forks(t_philo *philo, t_fork *fork, int pos);
 void		print_status(t_philo *philo, t_state state, bool debug);
 void		print_status_debug(t_philo *philo, t_state state);

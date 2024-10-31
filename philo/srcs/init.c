@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:34 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 16:01:59 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:44:48 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	init_table(t_table *table, char **av)
 	table->nb_running_threads = 0;
 	safe_mutex_handler(&table->table_mtx, INIT);
 	safe_mutex_handler(&table->print, INIT);
+	safe_mutex_handler(&table->death_mtx, INIT);
 	return (1);
 }
 

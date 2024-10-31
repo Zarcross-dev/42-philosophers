@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 02:44:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/29 15:51:58 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:00:49 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 long	get_time(t_timecode timecode)
 {
 	struct timeval	tv;
-
 	if (gettimeofday(&tv, NULL))
 		return (0);
 	if (timecode == SECONDS)
-		return (tv.tv_sec + tv.tv_usec / 1e6);
+		return (tv.tv_sec + tv.tv_usec / 1000000);
 	else if (timecode == MILLISECONDS)
-		return (tv.tv_sec * 1e3 + tv.tv_usec / 1e3);
+		return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 	else if (timecode == MICROSECONDS)
-		return (tv.tv_sec * 1e6 + tv.tv_usec);
+		return (tv.tv_sec * 1000000 + tv.tv_usec);
 	else
 		return (0);
 	return (0);

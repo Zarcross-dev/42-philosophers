@@ -6,13 +6,13 @@
 #    By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/18 04:27:02 by beboccas          #+#    #+#              #
-#    Updated: 2024/10/29 16:12:01 by beboccas         ###   ########.fr        #
+#    Updated: 2024/10/30 19:00:22 by beboccas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 CC		=	gcc
-CFLAGS	=	-Werror -Wall -Wextra -I $(HEADER) -pthread -g3
+CFLAGS	=	-Werror -Wall -Wextra -I $(HEADER) -fsanitise=thread -g3
 OBJDIR =	objs
 
 SRCS	=	srcs/philo.c \
