@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 02:46:17 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/31 17:54:00 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/11/01 02:11:25 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*monitor_dinner(void *data)
 		i = -1;
 		while (++i < table->nb_philo && !is_simulation_over(table))
 		{
-			cclock(table);
+			//cclock(table);
 			if (philo_died(table->philos + i))
 			{
 				set_bool(&table->table_mtx, &table->end, true);
