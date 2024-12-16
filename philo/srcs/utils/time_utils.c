@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 02:44:01 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/31 20:00:49 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:14:57 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 long	get_time(t_timecode timecode)
 {
 	struct timeval	tv;
+
 	if (gettimeofday(&tv, NULL))
 		return (0);
 	if (timecode == SECONDS)

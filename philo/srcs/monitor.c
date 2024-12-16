@@ -6,20 +6,11 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 02:46:17 by beboccas          #+#    #+#             */
-/*   Updated: 2024/11/01 02:11:25 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:14:24 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-void	cclock(t_table *table)
-{
-	long	time;
-
-	time = get_time(MILLISECONDS);
-	printf("Time: %ld\n", time - table->start);
-	ft_usleep(table, 1);
-}
 
 void	*monitor_dinner(void *data)
 {
@@ -35,7 +26,6 @@ void	*monitor_dinner(void *data)
 		i = -1;
 		while (++i < table->nb_philo && !is_simulation_over(table))
 		{
-			//cclock(table);
 			if (philo_died(table->philos + i))
 			{
 				set_bool(&table->table_mtx, &table->end, true);

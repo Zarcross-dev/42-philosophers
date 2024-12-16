@@ -6,13 +6,13 @@
 #    By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/18 04:27:02 by beboccas          #+#    #+#              #
-#    Updated: 2024/10/30 19:00:22 by beboccas         ###   ########.fr        #
+#    Updated: 2024/12/16 12:09:40 by beboccas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 CC		=	gcc
-CFLAGS	=	-Werror -Wall -Wextra -I $(HEADER) -fsanitise=thread -g3
+CFLAGS	=	-Werror -Wall -Wextra -I $(HEADER) -fsanitise=address -g3 -pthread
 OBJDIR =	objs
 
 SRCS	=	srcs/philo.c \
@@ -29,6 +29,7 @@ SRCS	=	srcs/philo.c \
 			srcs/utils/time_utils.c \
 			srcs/utils/utils.c \
 			srcs/utils/handlers.c \
+			srcs/utils/ft_malloc.c \
 			
 OBJS	=	$(SRCS:.c=.o)
 
