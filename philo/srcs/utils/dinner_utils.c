@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:01:50 by beboccas          #+#    #+#             */
-/*   Updated: 2024/11/01 02:13:49 by beboccas         ###   ########.fr       */
+/*   Updated: 2025/01/24 15:52:43 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	philo_think(t_philo *philo, bool sync)
 		time_to_think = 1;
 	if (philo->table->nb_philo % 2 == 1)
 	{
-		ft_usleep(philo->table, time_to_think * 0.4);
+		ft_usleep(philo->table, time_to_think * 0.6);
 		return ;
 	}
 }
