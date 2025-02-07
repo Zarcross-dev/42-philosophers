@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 02:46:17 by beboccas          #+#    #+#             */
-/*   Updated: 2025/01/25 13:35:47 by beboccas         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:14:24 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	*monitor_dinner(void *data)
 			{
 				set_bool(&table->table_mtx, &table->end, true);
 				print_status(table->philos + i, DEAD, DEBUG);
-				return (NULL);
 			}
 		}
 		ft_usleep(table, 1);

@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:01:50 by beboccas          #+#    #+#             */
-/*   Updated: 2025/01/24 15:52:43 by beboccas         ###   ########.fr       */
+/*   Updated: 2025/02/07 08:43:42 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	philo_think(t_philo *philo, bool sync)
 	print_status(philo, THINKING, DEBUG);
 	if (sync)
 		return ;
-	if (philo->table->nb_philo % 2 == 0)
-		return ;
+	/*if (philo->table->nb_philo % 2 == 0)
+		return ;*/
 	time_to_sleep = philo->table->time_to_sleep;
 	time_to_eat = philo->table->time_to_eat;
 	time_to_think = time_to_eat * 2 - time_to_sleep;
@@ -62,7 +62,7 @@ void	philo_think(t_philo *philo, bool sync)
 		time_to_think = 1;
 	if (philo->table->nb_philo % 2 == 1)
 	{
-		ft_usleep(philo->table, time_to_think * 0.6);
+		ft_usleep(philo->table, time_to_think * 0.4);
 		return ;
 	}
 }
