@@ -6,7 +6,7 @@
 /*   By: beboccas <beboccas@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 01:59:53 by beboccas          #+#    #+#             */
-/*   Updated: 2024/10/31 17:24:34 by beboccas         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:28:16 by beboccas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void	dinner_start(t_table *table)
 	i = -1;
 	while (++i < table->nb_philo)
 		safe_thread_handler(&table->philos[i].thread, NULL, NULL, JOIN);
+	safe_thread_handler(&table->monitor, NULL, NULL, JOIN);
 }
